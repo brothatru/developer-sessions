@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { CoolSection } from './components/CoolSection/CoolSection';
 import { Section } from './components/Section';
 import logo from './logo.svg';
 
@@ -7,20 +8,20 @@ function App() {
   const section1Ref = React.useRef(null);
   const section2Ref = React.useRef(null);
   const section3Ref = React.useRef(null);
-  const section4Ref = React.useRef(null);
-  const section5Ref = React.useRef(null);
+  // const section4Ref = React.useRef(null);
+  // const section5Ref = React.useRef(null);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       (entries, observer) => {
-        console.log('entries', entries);
+        // console.log('entries', entries);
         entries.forEach((entry) => {
           if (!entry.isIntersecting) {
             return;
           }
 
           const sectionTitle = entry.target.querySelector('h2')?.textContent;
-          console.log(`${sectionTitle} isIntersecting`, true);
+          // console.log(`${sectionTitle} isIntersecting`, true);
 
           switch (sectionTitle) {
             case 'Section 1':
@@ -49,8 +50,8 @@ function App() {
     observer.observe(section1Ref.current!);
     observer.observe(section2Ref.current!);
     observer.observe(section3Ref.current!);
-    observer.observe(section4Ref.current!);
-    observer.observe(section5Ref.current!);
+    // observer.observe(section4Ref.current!);
+    // observer.observe(section5Ref.current!);
 
     return () => {
       observer.disconnect();
@@ -76,8 +77,9 @@ function App() {
       <Section title='Section 1' ref={section1Ref} />
       <Section title='Section 2' ref={section2Ref} />
       <Section title='Section 3' ref={section3Ref} />
-      <Section title='Section 4' ref={section4Ref} />
-      <Section title='Section 5' ref={section5Ref} />
+      <CoolSection />
+      {/* <Section title='Section 4' ref={section4Ref} />
+      <Section title='Section 5' ref={section5Ref} /> */}
     </div>
   );
 }
